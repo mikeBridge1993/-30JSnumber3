@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to FSS</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Ubuntu">
+</head>
+<body>
+    <div class="body2">
+    <h2>Welcome to <span class='hl'>FSS <sup>®</sup></span> </h2>
+
+  <div class="controls">
+    <label for="spacing">You chose your business space:</label>
+    <input id="spacing" type="range" name="spacing" min="1" max="200" value="0" data-sizing="px">
+    <br>
+      
+      <label for="distance">You chose your business frontiers:</label>
+      <input id="distance" type="range" name="distance" min="1" max="4" value="1" data-sizing="px">
+      <br>
+    
+      <label for="base">You chose your business colors:</label>
+      <input id="base" type="color" name="base" value="#ffc600">
+  </div>
+  
+    <!--<div class ="images">
+  <div class="figure" id="ponte"><img src="Ponte.png"></div>
+      <div class="figure" id="paquim"><img src="Paquim.jpg"></div>
+</div>-->
+
+    
+    <div class ="images">
+        <div class="figure" id="ponte"></div>
+        <div class="figure" id="paquim"></div>
+    </div>
+        
+    </div>
+  <style>
+      :root{
+        --base:#ffc600;
+        --spacing: 10px;
+        --distance: 2px;
+          
+      }
+    /*
+      misc styles, nothing to do with CSS variables
+      */
+      * {
+          margin: 0px;
+          padding: 0px;
+      }
+      
+      .hl{
+          color: var(--base);
+      }
+      .images{
+          width:75%;
+          position:absolute;
+          left: 12.5%;
+        
+          
+      }
+      #ponte{
+          background-image: url(Ponte.png);
+          background-size: cover;
+          
+         
+          background-position: center; 
+      margin-left:5%;
+          }
+      #paquim{
+          background-image: url(Paquim.jpg);
+          background-repeat: no-repeat;
+          
+          background-position: center; 
+          background-size: cover;
+
+       
+      margin-left:10%;
+      margin-right:2%;
+      }
+      
+     .figure{
+        border-radius:90%;     
+        overflow:hidden;
+        padding: 0px;
+        width:40%;
+        height: 700px;
+        float: left;
+        border-style: solid;
+        margin-top: var(--spacing);
+        border-width: var(--distance);
+         border-color: var(--base);
+      }
+      
+      body{
+          background-color: var(--base);
+          
+      }
+      
+    .body2 {
+    
+      padding-top:0%;
+      margin-top: 0%;
+      margin-left: 0%;
+      margin-right: 0%;
+      width: 100%;
+      text-align: center;
+      background: dimgrey;
+      color: white;
+      font-family: 'Ubuntu';
+      font-weight: 100;
+      font-size: 50px;
+      height: 1500px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width:100px;
+    }
+  </style>
+
+  <script>
+      
+    const inputs = document.querySelectorAll('.controls input');
+      
+    function handleUpdate(){
+    const suffix = this.dataset.sizing || '';
+        document.documentElement.style.setProperty('--'+this.name, this.value  + suffix);
+        
+    console.log(this.value + suffix);
+        console.log(this.name);
+    }
+      
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+      
+      inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+      
+  </script>
+
+</body>
+</html>
